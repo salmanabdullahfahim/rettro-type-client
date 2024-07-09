@@ -1,4 +1,5 @@
 import Banner from "./Banner/Banner";
+import FeaturedBrands from "./FeaturedBrands/FeaturedBrands";
 import ServiceAdds from "./ServiceAdds/ServiceAdds";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <>
       <Banner />
       <ServiceAdds />
+      <FeaturedBrands />
     </>
   );
 };

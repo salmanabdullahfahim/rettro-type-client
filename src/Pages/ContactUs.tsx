@@ -1,3 +1,5 @@
+import { IoLocationOutline } from "react-icons/io5";
+
 const ContactUs = () => {
   const locations = [
     {
@@ -139,7 +141,7 @@ const ContactUs = () => {
                 key={location.title}
                 className="flex flex-col space-y-3 md:w-2/4 lg:w-1/5"
               >
-                {/* <MapPin className="h-5 w-5" /> */}
+                <IoLocationOutline className="h-5 w-5" />
                 <p className="w-full text-xl font-semibold  text-gray-900">
                   {location.title}
                 </p>
