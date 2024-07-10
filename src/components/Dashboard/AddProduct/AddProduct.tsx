@@ -1,11 +1,50 @@
+import { useAddProductMutation } from "@/redux/api/api";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
+
+type TInput = {
+  name: string;
+  brand: string;
+  price: number;
+  description: string;
+  availableQuantity: number;
+  rating: number;
+  image: string;
+};
+
 const AddProduct = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<TInput>();
+
+  const [AddProduct] = useAddProductMutation();
+
+  const onSubmit: SubmitHandler<TInput> = async (data) => {
+    try {
+      const res = await AddProduct(data).unwrap();
+
+      if (res?.success) {
+        toast.success(res?.message);
+        reset(); // Reset the form after successful submission
+      } else {
+        console.log(errors);
+        toast.error(res?.message);
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
+  };
+
   return (
     <div className="w-4/5 px-6">
       <h2 className="text-2xl font-semibold mt-5 italic md:mx-6">
         Add New Product
       </h2>
       <div className="my-8 md:mx-6 border-2 border-gray-600 p-6 md:p-8 rounded">
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-2 gap-2 ">
             <div className="mb-4">
               <label
@@ -18,7 +57,7 @@ const AddProduct = () => {
                 type="text"
                 id="name"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                name="name"
+                {...register("name")}
                 required
               />
             </div>
@@ -33,7 +72,7 @@ const AddProduct = () => {
                 type="text"
                 id="imageLink"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                name="imageLink"
+                {...register("image")}
                 required
               />
             </div>
@@ -48,7 +87,7 @@ const AddProduct = () => {
                 type="text"
                 id="price"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                name="price"
+                {...register("price", { valueAsNumber: true })}
                 required
               />
             </div>
@@ -63,7 +102,7 @@ const AddProduct = () => {
                 type="text"
                 id="rating"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                name="rating"
+                {...register("rating", { valueAsNumber: true })}
                 required
               />
             </div>
@@ -78,7 +117,7 @@ const AddProduct = () => {
                 type="text"
                 id="brand"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                name="brand"
+                {...register("brand")}
                 required
               />
             </div>
@@ -93,7 +132,7 @@ const AddProduct = () => {
                 type="number"
                 id="availableQuantity"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                name="availableQuantity"
+                {...register("availableQuantity", { valueAsNumber: true })}
                 required
               />
             </div>
@@ -107,7 +146,7 @@ const AddProduct = () => {
               <textarea
                 id="description"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                name="description"
+                {...register("description")}
                 required
               ></textarea>
             </div>
@@ -117,7 +156,7 @@ const AddProduct = () => {
               type="submit"
               className="bg-black hover:bg-black/70 text-white font-bold py-2 px-12 rounded"
             >
-              Submit
+              Add Product
             </button>
           </div>
         </form>
