@@ -1,6 +1,6 @@
 import { useGetProductsQuery } from "@/redux/api/api";
-import { Link } from "react-router-dom";
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+import { DeleteProductModal } from "../DeleteProductModal/DeleteProductModal";
 
 type TProduct = {
   _id: string;
@@ -27,14 +27,6 @@ export function AllProducts() {
               All Products
             </h2>
           </div>
-          <Link to="/dashboard/add-product">
-            <button
-              type="button"
-              className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              Add new Product
-            </button>
-          </Link>
         </div>
         <div className="mt-6 flex flex-col">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -109,12 +101,7 @@ export function AllProducts() {
                           >
                             <MdEdit size={22} className="text-white" />
                           </button>
-                          <button
-                            type="button"
-                            className="ml-4 bg-red-500 hover:bg-red-600 rounded-lg p-1"
-                          >
-                            <MdDelete size={22} className="text-white" />
-                          </button>
+                          <DeleteProductModal id={product._id} />
                         </td>
                       </tr>
                     ))}
