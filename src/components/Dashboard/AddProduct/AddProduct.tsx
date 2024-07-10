@@ -60,11 +60,11 @@ const AddProduct = () => {
                 htmlFor="imageLink"
                 className="block text-gray-700 font-bold mb-2"
               >
-                Image Link:
+                Image URL:
               </label>
               <input
                 type="text"
-                id="imageLink"
+                id="imageUrl"
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
                 {...register("image")}
                 required
@@ -80,6 +80,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 id="price"
+                step={0.01}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
                 {...register("price", { valueAsNumber: true })}
                 required

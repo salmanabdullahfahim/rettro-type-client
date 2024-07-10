@@ -1,6 +1,6 @@
 import { useGetProductsQuery } from "@/redux/api/api";
-import { MdEdit } from "react-icons/md";
 import { DeleteProductModal } from "../DeleteProductModal/DeleteProductModal";
+import { UpdateProductModal } from "../UpdateProductModal/UpdateProductModal";
 
 export type TProduct = {
   _id: string;
@@ -95,12 +95,7 @@ export function AllProducts() {
                           </div>
                         </td>
                         <td className="whitespace-nowrap px-4 py-4 text-right text-sm font-medium">
-                          <button
-                            type="button"
-                            className="ml-4 bg-blue-500 hover:bg-blue-600 rounded-lg p-1"
-                          >
-                            <MdEdit size={22} className="text-white" />
-                          </button>
+                          <UpdateProductModal product={product} />
                           <DeleteProductModal product={product} />
                         </td>
                       </tr>
