@@ -24,11 +24,9 @@ const AddProduct = () => {
       if (res?.success) {
         toast.success(res?.message);
         reset(); // Reset the form after successful submission
-      } else {
-        toast.error(res?.message);
       }
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error(error?.data?.errorSources[0]?.message);
     }
   };
 
