@@ -13,12 +13,7 @@ type TInput = {
 };
 
 const AddProduct = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<TInput>();
+  const { register, handleSubmit, reset } = useForm<TInput>();
 
   const [AddProduct] = useAddProductMutation();
 
@@ -30,7 +25,6 @@ const AddProduct = () => {
         toast.success(res?.message);
         reset(); // Reset the form after successful submission
       } else {
-        console.log(errors);
         toast.error(res?.message);
       }
     } catch (error) {
