@@ -2,7 +2,6 @@ import { BsYoutube, BsLinkedin, BsFacebook, BsReddit } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 import Logo from "../Navbar/Logo";
-import Container from "../Container/Container";
 
 const Footer = () => {
   return (
