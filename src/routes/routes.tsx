@@ -1,4 +1,5 @@
 import App from "@/App";
+import { AllProducts } from "@/components/Dashboard/AllProducts/AllProducts";
 import Dashboard from "@/components/Dashboard/Dashboard";
 import Home from "@/components/Home/Home";
 import DashboardLayout from "@/components/layout/DashboardLayout";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Dashboard />,
+      },
+      {
+        path: "all-products",
+        element: <AllProducts />,
       },
     ],
   },

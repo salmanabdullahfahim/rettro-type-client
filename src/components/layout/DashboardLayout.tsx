@@ -3,7 +3,7 @@ import { Sidebar } from "../Sidebar/Sidebar";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex">
+    <div className="flex justify-between">
       <Sidebar />
 
       <Outlet />
