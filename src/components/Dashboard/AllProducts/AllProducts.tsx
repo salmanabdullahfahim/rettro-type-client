@@ -81,7 +81,7 @@ export function AllProducts() {
                         <td className="whitespace-nowrap px-4 py-4">
                           <div className="h-10 w-10 flex-shrink-0">
                             <img
-                              className="h-full w-full object-contain "
+                              className="h-full w-full object-contain rounded-md"
                               src={product.image}
                               alt={product.name}
                             />
