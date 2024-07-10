@@ -11,8 +11,9 @@ import {
 import { useDeleteProductMutation } from "@/redux/api/api";
 import { MdDelete } from "react-icons/md";
 import { toast } from "sonner";
+import { TProduct } from "../AllProducts/AllProducts";
 
-export function DeleteProductModal({ id }: { id: string }) {
+export function DeleteProductModal({ product }: { product: TProduct }) {
   const [deleteProduct] = useDeleteProductMutation();
 
   const handleDelete = async (id: string) => {
@@ -37,13 +38,13 @@ export function DeleteProductModal({ id }: { id: string }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Delete This Product</DialogTitle>
+          <DialogTitle>Delete {product.name}</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete this product?
+            Are you sure to delete this product?
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button onClick={() => handleDelete(id)}>Delete</Button>
+          <Button onClick={() => handleDelete(product._id)}>Delete</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

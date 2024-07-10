@@ -2,7 +2,7 @@ import { useGetProductsQuery } from "@/redux/api/api";
 import { MdEdit } from "react-icons/md";
 import { DeleteProductModal } from "../DeleteProductModal/DeleteProductModal";
 
-type TProduct = {
+export type TProduct = {
   _id: string;
   name: string;
   brand: string;
@@ -101,7 +101,7 @@ export function AllProducts() {
                           >
                             <MdEdit size={22} className="text-white" />
                           </button>
-                          <DeleteProductModal id={product._id} />
+                          <DeleteProductModal product={product} />
                         </td>
                       </tr>
                     ))}
