@@ -2,13 +2,75 @@ import { useGetProductQuery } from "@/redux/api/api";
 import { FaStar } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Rating from "react-rating";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import Swal from "sweetalert2";
+import { addToCart } from "@/redux/features/cartSlice";
 
 export function ProductDetails() {
   const { id } = useParams();
 
   const { data, isLoading } = useGetProductQuery(id);
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector((state) => state.cart.items);
 
   if (isLoading) return <div>Loading...</div>;
+
+  const {
+    _id,
+    image,
+    name,
+    brand,
+    availableQuantity,
+    price,
+    rating,
+    description,
+  } = data.data;
+
+  const handleAddToCart = () => {
+    const product = {
+      _id,
+      image,
+      name,
+      brand,
+      availableQuantity,
+      price,
+      rating,
+      description,
+    };
+
+    // Check if the product is already in the cart
+    const cartItem = cartItems.find((item) => item._id === product._id);
+
+    // If the product is in the cart and its quantity is less than or equal to 0
+    if (cartItem && cartItem.availableQuantity <= 0) {
+      Swal.fire({
+        title: "Product is out of stock!",
+        text: "This product is no longer available.",
+        icon: "error",
+      });
+      return;
+    }
+
+    // If the product is not in the cart and its quantity is less than or equal to 0
+    if (!cartItem && product.availableQuantity <= 0) {
+      Swal.fire({
+        title: "Product is out of stock!",
+        text: "This product is no longer available.",
+        icon: "error",
+      });
+      return;
+    }
+
+    // If the product is in stock, add it to the cart
+    dispatch(addToCart(product));
+
+    // Show success message
+    Swal.fire({
+      title: "Product added to cart!",
+      text: "Successfully added to your cart.",
+      icon: "success",
+    });
+  };
   return (
     <div className="sp mx-auto max-w-7xl px-2 py-10 lg:px-0">
       <div className="overflow-hidden">
@@ -64,6 +126,7 @@ export function ProductDetails() {
               </div>
               <div className="space-y-2.5 pt-1.5 md:space-y-3.5 lg:pt-3 xl:pt-4">
                 <button
+                  onClick={handleAddToCart}
                   type="button"
                   className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                 >

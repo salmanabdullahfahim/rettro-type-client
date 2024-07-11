@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 export interface Product {
   _id: string;
   image: string;
-  title: string;
+  name: string;
   brand: string;
   availableQuantity: number;
   price: number;
