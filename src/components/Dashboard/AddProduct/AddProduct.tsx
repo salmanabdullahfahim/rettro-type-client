@@ -22,11 +22,23 @@ const AddProduct = () => {
       const res = await AddProduct(data).unwrap();
 
       if (res?.success) {
-        toast.success(res?.message);
+        toast.success(res?.message, {
+          duration: 1500,
+          style: {
+            background: "#333",
+            color: "#fff",
+          },
+        });
         reset(); // Reset the form after successful submission
       }
     } catch (error) {
-      toast.error(error?.data?.errorSources[0]?.message);
+      toast.error(error?.data?.errorSources[0]?.message, {
+        duration: 1500,
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 

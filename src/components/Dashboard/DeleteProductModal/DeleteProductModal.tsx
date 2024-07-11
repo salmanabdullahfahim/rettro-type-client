@@ -20,7 +20,13 @@ export function DeleteProductModal({ product }: { product: TProduct }) {
     try {
       const res = await deleteProduct(id).unwrap();
       if (res?.success) {
-        toast.success(res?.message);
+        toast.success(res?.message, {
+          duration: 1500,
+          style: {
+            background: "#333",
+            color: "#fff",
+          },
+        });
       }
     } catch (error) {
       console.log(error);

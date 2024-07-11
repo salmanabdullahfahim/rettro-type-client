@@ -3,9 +3,9 @@ import { FaStar } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Rating from "react-rating";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import Swal from "sweetalert2";
 import { addToCart } from "@/redux/features/cartSlice";
 import { ProductDetailsSkeleton } from "@/components/Skeleton/ProductDetailsSkeleton";
+import { toast } from "sonner";
 
 export function ProductDetails() {
   const { id } = useParams();
@@ -49,20 +49,24 @@ export function ProductDetails() {
 
     // If the product is in the cart and its quantity is less than or equal to 0
     if (cartItem && cartItem.availableQuantity <= 0) {
-      Swal.fire({
-        title: "Product is out of stock!",
-        text: "This product is no longer available.",
-        icon: "error",
+      toast.error("Product is out of stock!", {
+        duration: 1500,
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
       });
       return;
     }
 
     // If the product is not in the cart and its quantity is less than or equal to 0
     if (!cartItem && product.availableQuantity <= 0) {
-      Swal.fire({
-        title: "Product is out of stock!",
-        text: "This product is no longer available.",
-        icon: "error",
+      toast.error("Product is out of stock!", {
+        duration: 1500,
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
       });
       return;
     }
@@ -71,15 +75,18 @@ export function ProductDetails() {
     dispatch(addToCart(product));
 
     // Show success message
-    Swal.fire({
-      title: "Product added to cart!",
-      text: "Successfully added to your cart.",
-      icon: "success",
+    toast.success("Product added to cart!", {
+      icon: "🛒",
+      duration: 1500,
+      style: {
+        background: "#333",
+        color: "#fff",
+      },
     });
   };
   return (
     <div className="sp mx-auto max-w-7xl px-2 py-10 lg:px-0">
-      <div className="overflow-hidden">
+      <div className="overflow-hidden mx-12">
         <div className="mb-9 pt-4 md:px-6 md:pt-7 lg:mb-2 lg:p-8 2xl:p-10 2xl:pt-10">
           <div className="items-start justify-between lg:flex lg:space-x-8">
             <div className="mb-6 items-center justify-center overflow-hidden md:mb-8 lg:mb-0 xl:flex">
@@ -91,7 +98,7 @@ export function ProductDetails() {
                       src={data?.data?.image}
                       width={650}
                       height={590}
-                      className="rounded-lg object-cover md:h-[300px] md:w-full lg:h-full"
+                      className="rounded-lg object-cover md:h-[300px] md:w-full lg:h-full p-2"
                     />
                   </div>
                 </div>
