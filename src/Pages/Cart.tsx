@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { useGetProductsQuery } from "@/redux/api/api";
@@ -88,9 +88,16 @@ const Cart = () => {
             </div>
           </div>
         ) : (
-          <h2 className="text-3xl text-[#4A249D] mb-7 font-bold text-center">
-            There is no cart items.
-          </h2>
+          <div className="flex flex-col gap-y-6 items-center justify-center bg-white h-96 px-4">
+            <p className="border-[1px] border-darkText w-full p-2 text-center rounded-md">
+              Your product cart is empty
+            </p>
+            <Link to="/products">
+              <button className="bg-darkText text-white py-2 px-6 rounded-md hover:bg-black/75 duration-200">
+                Return to Shop
+              </button>
+            </Link>
+          </div>
         )}
       </div>
       {cartItems.length > 0 && (
