@@ -1,5 +1,7 @@
 import { TProduct } from "@/components/Dashboard/AllProducts/AllProducts";
+import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Rating from "react-rating";
 
 export function ProductCard({ product }: { product: TProduct }) {
   return (
@@ -14,24 +16,34 @@ export function ProductCard({ product }: { product: TProduct }) {
           {product.name}{" "}
         </h1>
 
-        <div className="mt-4">
-          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
-            Brand: {product.brand}
-          </span>
-        </div>
         <div className="mt-3 flex items-center space-x-2">
           <span className="block text-sm font-semibold">
             Available Quantity :{" "}
           </span>
-          <span className="block h-4 w-4 rounded-full border-2 border-gray-300 bg-red-400"></span>
-          <span className="block h-4 w-4 rounded-full border-2 border-gray-300 bg-purple-400"></span>
-          <span className="block h-4 w-4 rounded-full border-2 border-gray-300 bg-orange-400"></span>
+
+          <span>{product.availableQuantity}</span>
         </div>
-        <div className="mt-5 flex items-center space-x-2">
-          <span className="block text-sm font-semibold">Price : </span>
-          <span className="block cursor-pointer rounded-md border border-gray-300 p-1 px-2 text-xs font-medium">
-            {product.price}
+        <div className="mt-5 flex items-center justify-between space-x-2">
+          <div className="flex gap-x-2 items-center">
+            <span className="block text-sm font-semibold">Price : </span>
+            <span className="block cursor-pointer rounded-md border border-gray-300 p-1 px-2 text-xs font-medium">
+              ${product.price}
+            </span>
+          </div>
+          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
+            Brand: {product.brand}
           </span>
+        </div>
+        <div className="flex items-center mb-2 gap-1 my-4">
+          <p className="text-15px font-semibold">Rating: </p>
+          {/* @ts-expect-error: Type issue with Rating component */}
+          <Rating
+            initialRating={product.rating}
+            emptySymbol={<FaStar className="text-gray-300 " />}
+            fullSymbol={<FaStar className="text-yellow-500" />}
+            fractions={2}
+            readonly
+          />
         </div>
         <Link to={`/products/${product._id}`}>
           <button
