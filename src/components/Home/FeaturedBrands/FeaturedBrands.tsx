@@ -23,14 +23,14 @@ const keyboardBrands = [
 
 const FeaturedBrands = () => {
   return (
-    <section className="ezy__clients13 light py-14 md:py-24 bg-white  text-zinc-900 ">
+    <section className="ezy__clients13 light py-14 md:py-18 mt-3 bg-white  text-zinc-900 lg:mt-8">
       <div className="container px-12">
         <div className="grid grid-cols-12 mb-8 md:mb-16">
           <div className="col-span-12 lg:col-span-6">
-            <h2 className="font-bold text-[25px] lg:text-[35px] leading-none mb-6">
-              Featured Brands
+            <h2 className="font-bold text-3xl mb-2">
+              FEATURED <span className="text-headerText">BRANDS</span>
             </h2>
-            <p className="text-xl leading-6 opacity-80">
+            <p className="text-[1.1rem] leading-4 opacity-90 text-justify">
               Explore our curated selection of top mechanical keyboard brands.
             </p>
           </div>

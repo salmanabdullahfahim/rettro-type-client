@@ -42,14 +42,16 @@ const IncentiveItem: React.FC<{ item: Item }> = ({ item }) => (
 
 const ServiceAdds: React.FC = () => {
   return (
-    <section className="ezy__epincentives3 light py-14 md:py-24 bg-white dark:bg-[#0b1727] text-black dark:text-white relative overflow-hidden z-10">
+    <section className="ezy__epincentives3 light py-14 md:py-16 bg-white  text-black  relative overflow-hidden z-10 ">
       <Container>
         <div className="container px-4 mx-auto">
           <div className="flex max-w-3xl justify-center text-center mx-auto">
             <div>
-              <h1 className="text-2xl md:text-[45px] leading-none font-bold mb-6">
-                We built best Business for you.
-              </h1>
+              <h2 className="text-3xl mb-10 font-bold text-center">
+                {" "}
+                WE ARE COMMITTED TO GIVE YOU
+                <span className="text-headerText"> THE BEST</span>
+              </h2>
             </div>
           </div>
           <div className="grid grid-cols-6 gap-6 text-center">

@@ -30,14 +30,15 @@ const features = [
 
 const KeyboardImportance = () => {
   return (
-    <div className="md:px-12 w-full p-4 mt-8 mb-6 rounded-md ">
+    <div className="md:px-12 w-full p-4 mt-8 mb-12 lg:mb-24 rounded-md ">
       <h2 className="text-3xl mb-2 font-bold text-center">
         {" "}
-        IMPORTANCE OF MECHANCAL<span className="text-darkText"> KEYBOARD</span>
+        IMPORTANCE OF MECHANICAL
+        <span className="text-headerText"> KEYBOARD</span>
       </h2>
 
       <div className="flex justify-center mt-2">
-        <div className="h-2 w-12  rounded-lg text-center bg-darkText"></div>
+        <div className="h-2 w-12  rounded-lg text-center bg-headerText"></div>
       </div>
 
       <div className="md:flex gap-5 mt-10">

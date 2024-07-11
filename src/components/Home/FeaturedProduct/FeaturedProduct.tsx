@@ -9,7 +9,10 @@ const FeaturedProduct = () => {
   console.log(data);
   return (
     <div className="w-full">
-      <h2 className="font-semibold text-2xl text-center">Featured Product</h2>
+      <h2 className="text-3xl mb-2 font-bold text-center">
+        {" "}
+        FEATURED <span className="text-headerText"> PRODUCTS</span>
+      </h2>
 
       <div className=" mx-12 grid items-center justify-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
         {isLoading ? (

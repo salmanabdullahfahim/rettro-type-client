@@ -82,7 +82,7 @@ const Rating: React.FC<RatingProps> = ({
 );
 
 const TestimonialItem: React.FC<TestimonialItemProps> = ({ testimonial }) => (
-  <div className="bg-white shadow-xl dark:bg-slate-800 rounded-2xl transition duration-300 h-full p-6">
+  <div className="bg-white shadow-xl  rounded-2xl transition duration-300 h-full p-6">
     <div className="mt-4">
       <div className="flex items-center">
         <div className="mr-2 py-3">
@@ -106,20 +106,17 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ testimonial }) => (
 
 const CustomerReviews: React.FC = () => {
   return (
-    <section className="ezy__testimonial1 light py-14 md:py-24 bg-white  text-zinc-900 ">
+    <section className="ezy__testimonial1 light py-14 md:py-18 bg-white  text-zinc-900 ">
       <div className="container px-14 mx-auto">
-        <div className="flex justify-center md:mb-6">
-          <div className="sm:max-w-lg text-center">
-            <h2 className="text-3xl leading-none md:text-[45px] font-bold mb-4">
-              Customer Reviews
+        <div className="flex justify-center md:mb-2">
+          <div className="sm:max-w-lg lg:max-w-2xl text-center">
+            <h2 className="font-bold text-3xl mb-2">
+              WHAT OUR CUSTOMERS SAY{" "}
+              <span className="text-headerText">ABOUT US!</span>
             </h2>
-            <p>
-              It’s easier to reach your savings goals when you have the right
-              savings account. Take a look and find the right one for you!
-            </p>
           </div>
         </div>
-        <div className="grid grid-cols-6 gap-6 pt-8">
+        <div className="grid grid-cols-6 gap-6 pt-4 lg:pt-2">
           {testimonialList.map((testimonial, i) => (
             <div className="col-span-6 md:col-span-3 lg:col-span-2" key={i}>
               <TestimonialItem testimonial={testimonial} />
