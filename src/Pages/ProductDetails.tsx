@@ -5,6 +5,7 @@ import Rating from "react-rating";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Swal from "sweetalert2";
 import { addToCart } from "@/redux/features/cartSlice";
+import { ProductDetailsSkeleton } from "@/components/Skeleton/ProductDetailsSkeleton";
 
 export function ProductDetails() {
   const { id } = useParams();
@@ -13,7 +14,12 @@ export function ProductDetails() {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <>
+        <ProductDetailsSkeleton />
+      </>
+    );
 
   const {
     _id,
