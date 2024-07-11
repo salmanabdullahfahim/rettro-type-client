@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 
 const CheckOut = () => {
   const { totalOrderPrice } = useAppSelector((state) => state.cart);
+
   const cartItems = useAppSelector((state) => state.cart.items);
   const { data: products } = useGetProductsQuery(undefined);
   const [updateQuantity, { isLoading, isError }] = useUpdateQuantityMutation();
@@ -26,6 +27,7 @@ const CheckOut = () => {
       const updates = cartItems
         .map((item) => {
           const product = products?.data.find((p: any) => p._id === item._id);
+
           if (product) {
             return {
               id: product._id,

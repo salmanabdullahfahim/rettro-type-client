@@ -9,10 +9,13 @@ export const baseApi = createApi({
   endpoints: (builder) => ({
     // Get all products
     getProducts: builder.query({
-      query: () => ({
-        url: "/products",
-        method: "GET",
-      }),
+      query: (queries) => {
+        const params = new URLSearchParams(queries).toString();
+        return {
+          url: `/products?${params}`,
+          method: "GET",
+        };
+      },
       providesTags: ["Products"],
     }),
 
