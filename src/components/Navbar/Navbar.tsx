@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { FaCartPlus } from "react-icons/fa";
 import { Menu, X } from "lucide-react";
 import { useAppSelector } from "@/redux/hooks";
-import { Badge } from "../ui/badge";
 import Logo from "./Logo";
+import { BsCart } from "react-icons/bs";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const cartItems = useAppSelector((state) => state.cart.items);
+  const { totalOrderPrice } = useAppSelector((state) => state.cart);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -38,7 +38,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className=" flex items-center justify-between h-[65px] p-4 md:px-12  relative w-full shadow-md">
+    <div className=" bg-white flex items-center justify-between h-[65px] p-4 md:px-12   w-full shadow-md sticky top-0 z-20">
       {/* keyboard logo or name */}
       <Logo />
       {/* desktop menu */}
@@ -109,11 +109,15 @@ const Navbar = () => {
         </div>
       )}
       {/* cart icon */}
-      <NavLink to="/cart" className="flex items-center w-1/12 p-3">
-        <Badge className="bg-white text-[#4A249D] text-lg relative -right-16 -top-3">
-          {cartItems?.length > 0 ? cartItems.length : 0}
-        </Badge>
-        <FaCartPlus className="text-[#ECC500] text-4xl" />
+
+      <NavLink to="/cart">
+        <div className="flex justify-center items-center bg-black hover:bg-slate-950 text-slate-100 hover:text-white rounded-full px-4 py-1.5 border-[1px] border-black hover:border-blue-500 duration-200 cursor-pointer relative">
+          <BsCart className="text-xl" />
+          <p className="font-semibold text-sm">${totalOrderPrice}</p>
+          <span className="bg-white rounded-full text-blue-600 text-xs font-semibold absolute -right-2 -top-1 w-5 h-5 flex justify-center items-center shadow-xl shadow-black">
+            {cartItems?.length > 0 ? cartItems.length : 0}
+          </span>
+        </div>
       </NavLink>
     </div>
   );
