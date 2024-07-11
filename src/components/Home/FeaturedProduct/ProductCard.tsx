@@ -1,4 +1,5 @@
 import { TProduct } from "@/components/Dashboard/AllProducts/AllProducts";
+import { Link } from "react-router-dom";
 
 export function ProductCard({ product }: { product: TProduct }) {
   return (
@@ -32,12 +33,14 @@ export function ProductCard({ product }: { product: TProduct }) {
             {product.price}
           </span>
         </div>
-        <button
-          type="button"
-          className="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-        >
-          See Details
-        </button>
+        <Link to={`/products/${product._id}`}>
+          <button
+            type="button"
+            className="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          >
+            See Details
+          </button>
+        </Link>
       </div>
     </div>
   );
