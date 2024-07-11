@@ -56,10 +56,7 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-      {/* mobile menu button */}
-      <div className="lg:hidden">
-        <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
-      </div>
+
       {/* mobile menu */}
       {isMenuOpen && (
         <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
@@ -98,19 +95,13 @@ const Navbar = () => {
                   ))}
                 </nav>
               </div>
-              <button
-                type="button"
-                className="mt-4 w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              >
-                Button text
-              </button>
             </div>
           </div>
         </div>
       )}
       {/* cart icon */}
 
-      <NavLink to="/cart">
+      <NavLink to="/cart" className="ml-3 md:ml-0">
         <div className="flex justify-center items-center bg-black hover:bg-slate-950 text-slate-100 hover:text-white rounded-full px-4 py-1.5 border-[1px] border-black hover:border-blue-500 duration-200 cursor-pointer relative">
           <BsCart className="text-xl" />
           <p className="font-semibold text-sm">${totalOrderPrice}</p>
@@ -119,6 +110,11 @@ const Navbar = () => {
           </span>
         </div>
       </NavLink>
+
+      {/* mobile menu button */}
+      <div className="lg:hidden">
+        <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
+      </div>
     </div>
   );
 };
