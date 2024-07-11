@@ -7,7 +7,9 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import AboutUs from "@/Pages/AboutUs";
 import AllProductPage from "@/Pages/AllProductPage";
 import Cart from "@/Pages/Cart";
+import CheckOut from "@/Pages/CheckOut";
 import ContactUs from "@/Pages/ContactUs";
+import OrderConfirmed from "@/Pages/OrderConfirmed";
 import { ProductDetails } from "@/Pages/ProductDetails";
 
 import { createBrowserRouter } from "react-router-dom";
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <CheckOut />,
+      },
+      {
+        path: "/order-confirmed",
+        element: <OrderConfirmed />,
       },
     ],
   },
