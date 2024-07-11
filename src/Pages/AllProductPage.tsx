@@ -1,10 +1,12 @@
 import { TProduct } from "@/components/Dashboard/AllProducts/AllProducts";
 import { ProductCard } from "@/components/Home/FeaturedProduct/ProductCard";
+import { ProductCardSkeleton } from "@/components/ui/skeleton";
 import { SortByPrice } from "@/components/SortByPrice/SortByPrice";
 import { useGetProductsQuery } from "@/redux/api/api";
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { CardSkeleton } from "@/components/Skeleton/CardSkeleton";
 
 const AllProductPage = () => {
   const [filter, setFilter] = useState("");
@@ -39,7 +41,11 @@ const AllProductPage = () => {
       </div>
 
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="mx-12 grid items-center justify-center space-y-4 px-2 py-8 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
+          {[...Array(8)].map((_, index) => (
+            <CardSkeleton key={index} />
+          ))}
+        </div>
       ) : data?.data.length === 0 ? (
         <div className="flex flex-col gap-y-6 items-center justify-center bg-white h-96 px-4">
           <p className="border-[1px] border-darkText w-3/4 p-2 text-center rounded-md font-semibold">
