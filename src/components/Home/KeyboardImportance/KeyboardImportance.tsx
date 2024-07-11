@@ -33,11 +33,11 @@ const KeyboardImportance = () => {
     <div className="md:px-12 w-full p-4 mt-8 mb-6 rounded-md ">
       <h2 className="text-3xl mb-2 font-bold text-center">
         {" "}
-        IMPORTANCE OF MECHANCAL<span className="text-[#4A249D]"> KEYBOARD</span>
+        IMPORTANCE OF MECHANCAL<span className="text-darkText"> KEYBOARD</span>
       </h2>
 
       <div className="flex justify-center mt-2">
-        <div className="h-2 w-12  rounded-lg text-center bg-[#4A249D]"></div>
+        <div className="h-2 w-12  rounded-lg text-center bg-darkText"></div>
       </div>
 
       <div className="md:flex gap-5 mt-10">

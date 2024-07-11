@@ -16,13 +16,6 @@ export function ProductCard({ product }: { product: TProduct }) {
           {product.name}{" "}
         </h1>
 
-        <div className="mt-3 flex items-center space-x-2">
-          <span className="block text-sm font-semibold">
-            Available Quantity :{" "}
-          </span>
-
-          <span>{product.availableQuantity}</span>
-        </div>
         <div className="mt-5 flex items-center justify-between space-x-2">
           <div className="flex gap-x-2 items-center">
             <span className="block text-sm font-semibold">Price : </span>
@@ -33,6 +26,13 @@ export function ProductCard({ product }: { product: TProduct }) {
           <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
             Brand: {product.brand}
           </span>
+        </div>
+        <div className="mt-3 flex items-center space-x-2">
+          <span className="block text-sm font-semibold">
+            Available Quantity :{" "}
+          </span>
+
+          <span>{product.availableQuantity}</span>
         </div>
         <div className="flex items-center mb-2 gap-1 my-4">
           <p className="text-15px font-semibold">Rating: </p>
