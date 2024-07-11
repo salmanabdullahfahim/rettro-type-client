@@ -5,6 +5,7 @@ import Dashboard from "@/components/Dashboard/Dashboard";
 import Home from "@/components/Home/Home";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import AboutUs from "@/Pages/AboutUs";
+import AllProductPage from "@/Pages/AllProductPage";
 import ContactUs from "@/Pages/ContactUs";
 import { ProductDetails } from "@/Pages/ProductDetails";
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/contact-us",
         element: <ContactUs />,
+      },
+      {
+        path: "/products",
+        element: <AllProductPage />,
       },
       {
         path: "/products/:id",
