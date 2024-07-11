@@ -35,7 +35,7 @@ const FeaturedBrands = () => {
             </p>
           </div>
         </div>
-        <div className="flex justify-around items-center gap-6">
+        <div className="flex flex-col md:flex-wrap lg:flex-row justify-around items-center gap-6">
           {keyboardBrands.map((brand, index) => (
             <img
               src={brand.logo}
