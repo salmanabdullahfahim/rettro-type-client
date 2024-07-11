@@ -42,36 +42,36 @@ const Cart = () => {
   };
 
   return (
-    <div className="md:px-12 w-full p-4 mt-12  rounded-md ">
+    <div className="md:px-12 w-full p-4 mt-12 mb-12  rounded-md ">
       <div>
         {cartItems.length > 0 && (
-          <h2 className="text-3xl tracking-widest mb-7 font-bold text-center">
-            My Bag <span className="text-[#4A249D]"> {cartItems.length}</span>
+          <h2 className="text-3xl mb-7 font-bold text-center">
+            My Product Cart - <span className=""> {cartItems.length}</span>
           </h2>
         )}
 
         {cartItems?.length > 0 ? (
-          <div className="bg-[#dbd3eb]  w-full h-full space-y-3 rounded-xl p-[5px] ">
+          <div className="bg-gray-100  w-full h-full space-y-3 rounded-md p-[5px] ">
             <div className="bg-white rounded-md p-4  space-y-3  w-full h-full ">
               <Table className="">
                 <TableHeader>
                   <TableRow className="rounded-lg">
-                    <TableHead className="bg-[#dbd3eb] text-lg w-3/12 text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center">
                       Image
                     </TableHead>
-                    <TableHead className="bg-[#dbd3eb] text-lg w-3/12  text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12  text-center">
                       Name
                     </TableHead>
-                    <TableHead className="bg-[#dbd3eb] text-lg w-3/12 text-center">
-                      Qty
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center">
+                      Quantity
                     </TableHead>
-                    <TableHead className="bg-[#dbd3eb] text-lg w-3/12 text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center">
                       Price
                     </TableHead>
-                    <TableHead className="bg-[#dbd3eb] text-lg w-3/12 text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center">
                       Actions
                     </TableHead>
-                    <TableHead className="bg-[#dbd3eb] text-lg w-3/12 text-center"></TableHead>
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center"></TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -101,10 +101,10 @@ const Cart = () => {
         )}
       </div>
       {cartItems.length > 0 && (
-        <div className="text-end mx-auto mt-4">
+        <div className="text-end mx-auto mt-8">
           <button
             onClick={handleProceedCheckout}
-            className={`text-white text-lg font-medium mx-auto rounded px-3 py-2 bg-[#736100] ${
+            className={`text-white text-sm font-semibold mx-auto rounded px-3 py-2 bg-black ${
               isButtonDisabled
                 ? "opacity-50 bg-gray-300 cursor-not-allowed"
                 : ""

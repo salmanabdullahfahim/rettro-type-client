@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TableCell, TableRow } from "@/components/ui/table";
-import { RiDeleteBack2Fill } from "react-icons/ri";
+import { RxCross2 } from "react-icons/rx";
 import Swal from "sweetalert2";
-import { FaPlusCircle } from "react-icons/fa";
-import { FaMinusCircle } from "react-icons/fa";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { useAppDispatch } from "@/redux/hooks";
 import {
   decrementQuantity,
@@ -77,15 +76,15 @@ const SingleCart = ({ cart }: TTodoCartProps) => {
 
       <TableCell className="text-center text-base">${cart.price}</TableCell>
       <TableCell className="text-center text-base">
-        <div className="px-2 py-1 rounded-md flex items-center w-full  border border-[#4A249D]">
-          <FaPlusCircle
+        <div className="px-2 py-1 rounded-md flex items-center w-full  border border-darkText">
+          <FaPlus
             onClick={() => handleIncrease(cart?._id)}
-            className="text-[#4A249D] mx-1 text-xl"
+            className="text-darkText mx-2 text-sm cursor-pointer"
           />
-          <div className="text-[#4A249D]  text-3xl">|</div>
-          <FaMinusCircle
+          <div className="text-darkText  text-2xl">|</div>
+          <FaMinus
             onClick={() => handleDecrease(cart?._id)}
-            className="text-[#4A249D] mx-1  text-xl"
+            className="text-darkText mx-2  text-sm cursor-pointer"
           />
         </div>
       </TableCell>
@@ -93,9 +92,9 @@ const SingleCart = ({ cart }: TTodoCartProps) => {
       <TableCell className="text-center text-base">
         <button
           onClick={() => handleDelete(cart?._id)}
-          className="bg-red-600 p-3 rounded-full"
+          className="bg-red-500 p-3 rounded-full"
         >
-          <RiDeleteBack2Fill className="text-white text-lg" />
+          <RxCross2 className="text-white text-lg" />
         </button>
       </TableCell>
     </TableRow>
