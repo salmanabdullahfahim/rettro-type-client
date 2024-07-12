@@ -25,7 +25,6 @@ export type TTodoCartProps = {
 };
 
 const SingleCart = ({ cart }: TTodoCartProps) => {
-  console.log(cart);
   const dispatch = useAppDispatch();
 
   const handleDelete = (cartId: string) => {

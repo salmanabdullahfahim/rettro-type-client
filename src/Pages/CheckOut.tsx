@@ -50,10 +50,9 @@ const CheckOut = () => {
       ...formData,
       products,
     };
-    console.log({ orderData });
+
     try {
       const res = await addOrder(orderData).unwrap();
-      console.log("Order placed successfully", res);
 
       if (res?.success === true) {
         toast.success("Order placed successfully", {

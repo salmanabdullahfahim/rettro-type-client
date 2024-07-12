@@ -44,25 +44,18 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
-      console.log(action.payload);
       const product = action.payload;
       const existingItem = state.items.find((item) => item._id === product._id);
 
-      console.log(existingItem);
-
       if (existingItem) {
-        console.log("exist");
         if (existingItem.availableQuantity > 0) {
           existingItem.availableQuantity = existingItem.availableQuantity - 1;
           existingItem.cartQuantity += 1;
           state.totalOrderPrice += product.price;
         } else {
-          console.log("exist");
           return showAlert("Product is out of stock!");
         }
       } else {
-        console.log("new");
-
         if (product.availableQuantity > 0) {
           product.availableQuantity = product.availableQuantity - 1;
           state.items.push({ ...product, cartQuantity: 1 });

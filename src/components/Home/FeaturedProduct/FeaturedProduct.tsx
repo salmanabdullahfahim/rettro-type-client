@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const FeaturedProduct = () => {
   const { data, isLoading } = useGetProductsQuery(undefined);
-  console.log(data);
   return (
     <div className="w-full">
       <h2 className="text-3xl mb-2 font-bold text-center">
