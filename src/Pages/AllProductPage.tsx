@@ -1,20 +1,22 @@
 import { TProduct } from "@/components/Dashboard/AllProducts/AllProducts";
 import { ProductCard } from "@/components/Home/FeaturedProduct/ProductCard";
-import { ProductCardSkeleton } from "@/components/ui/skeleton";
 import { SortByPrice } from "@/components/SortByPrice/SortByPrice";
 import { useGetProductsQuery } from "@/redux/api/api";
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import { CardSkeleton } from "@/components/Skeleton/CardSkeleton";
+import useDebounce from "@/hooks/useDebouncer";
 
 const AllProductPage = () => {
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
+  // debounce search term
+  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+
   const queries = {
-    searchTerm,
+    searchTerm: debouncedSearchTerm,
     sort,
   };
 
@@ -34,10 +36,17 @@ const AllProductPage = () => {
         />
       </div>
 
-      {/* sort by price */}
-      <div className="flex items-center justify-end gap-x-2 mt-3 md:mt-8 mr-6 md:mr-12">
-        <p className="font-semibold">Sort By Price</p>
-        <SortByPrice setSort={setSort} />
+      <div className="flex items-center justify-between">
+        {/* filter by price range */}
+        <div className="flex items-center justify-start gap-x-2 mt-3 md:mt-8 ml-6 md:ml-12">
+          <p className="font-semibold">Filter By Price Range</p>
+        </div>
+
+        {/* sort by price */}
+        <div className="flex items-center justify-end gap-x-2 mt-3 md:mt-8 mr-6 md:mr-12">
+          <p className="font-semibold">Sort By Price</p>
+          <SortByPrice setSort={setSort} />
+        </div>
       </div>
 
       {isLoading ? (
