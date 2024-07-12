@@ -1,120 +1,68 @@
-const cardsData = [
+import PropTypes from "prop-types";
+
+const products = [
   {
-    id: 1,
-    bgClass: "bg-orange-400",
-    imageSrc: "https://cdn.easyfrontend.com/pictures/tshirt-abstract.png",
-    title: "Special somebunny",
-    buttonClass: "text-orange-500",
-    buttonLabel: "Shop Now",
-    childImageSrc: "https://cdn.easyfrontend.com/pictures/child-abstact1.png",
+    img: "https://i.ibb.co/JFR8Vn8/pngwing-com-3.png",
+    title: "Mechanical Keyboard",
   },
   {
-    id: 2,
-    bgClass: "bg-red-600",
-    imageSrc: "https://cdn.easyfrontend.com/pictures/headphone-abstract.png",
-    title: "Spring Supper Sale",
-    buttonClass: "text-red-600",
-    buttonLabel: "Shop Now",
-    childImageSrc: "https://cdn.easyfrontend.com/pictures/child-abstact2.png",
+    img: "https://i.ibb.co/4snWKjF/pngwing-com-4.png",
+    title: "Gaming Mouse",
   },
   {
-    id: 3,
-    bgClass: "bg-blue-900",
-    imageSrc: "https://cdn.easyfrontend.com/pictures/shoe-abstract.png",
-    title: "Baby Collection",
-    buttonClass: "text-white",
-    buttonLabel: "Shop Now",
-    childImageSrc: "https://cdn.easyfrontend.com/pictures/child-abstact.png",
+    img: "https://i.ibb.co/xFSPBJ2/pngwing-com-5.png",
+    title: "Regular Keyboard",
+  },
+  {
+    img: "https://i.ibb.co/cY8ny7Z/pngwing-com-7.png",
+    title: "Gaming Combo",
   },
 ];
 
+// @ts-expect-error
+const ProductItem = ({ product }) => {
+  const containerStyle = {
+    backgroundImage:
+      "linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.4))",
+  };
+  return (
+    <div className="bg-white flex flex-col h-full relative z-20 rounded-md">
+      <div
+        className="absolute top-0 left-0 w-full h-full -z-10"
+        style={containerStyle}
+      ></div>
+      <div className="flex justify-center items-center p-6 h-full">
+        <img
+          src={product.img}
+          alt="..."
+          className="max-h-40 max-w-full w-auto"
+        />
+      </div>
+      <div className="text-center px-4 py-6">
+        <h2 className="text-lg font-bold leading-none mb-2">{product.title}</h2>
+      </div>
+    </div>
+  );
+};
+
+ProductItem.propTypes = {
+  product: PropTypes.object.isRequired,
+};
+
 export const ProductCategory = () => {
   return (
-    <section className="ezy__epcategory11 light py-14 md:py-6 bg-white  text-zinc-900 relative overflow-hidden z-10 md:mt-12">
-      <div className="container px-12 mx-auto">
-        <div className="flex flex-col lg:flex-row gap-6">
-          <div className="w-full lg:w-1/2">
-            <div className="gap-6 p-0">
-              {cardsData.slice(0, 2).map((card) => (
-                <div key={card.id}>
-                  <div
-                    className={`${card.bgClass} rounded-xl min-h-[280px] text-white flex items-center relative p-6 lg:p-12 mb-6 z-10`}
-                  >
-                    {/* Shape */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <img src={card.imageSrc} alt="" />
-                    </div>
-                    <div className="absolute bottom-0 left-0 -z-10">
-                      <img
-                        src="https://cdn.easyfrontend.com/pictures/circle-abstract.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="absolute top-0 right-0 -z-10">
-                      <img
-                        src="https://cdn.easyfrontend.com/pictures/circle-abstract.png"
-                        alt=""
-                      />
-                    </div>
-                    <div className="grid grid-cols-12">
-                      <div className="col-span-6">
-                        <h1 className="text-[32px] md:text-5xl font-bold leading-[1.1]">
-                          {card.title}
-                        </h1>
-                        <button
-                          className={`px-7 py-3.5 leading-none rounded-lg bg-white ${card.buttonClass} font-bold mt-12`}
-                        >
-                          {card.buttonLabel}
-                        </button>
-                      </div>
-                      <div className="col-span-6">
-                        <div className="absolute bottom-0 right-5 -z-10">
-                          <img
-                            src={card.childImageSrc}
-                            alt=""
-                            className="max-w-full h-auto"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+    <section className="ezy__epcategory4 light py-14 md:py-22 bg-white text-zinc-900 relative overflow-hidden z-10">
+      <div className="container px-4 mx-auto">
+        <h2 className="font-bold text-3xl mb-2 text-center">
+          PRODUCT <span className="text-headerText">CATEGORY</span>
+        </h2>
 
-          <div className="w-full lg:w-1/2">
-            {/* Card Three */}
-            <div
-              className={`${cardsData[2].bgClass} rounded-xl min-h-[640px] text-white flex items-center relative p-6 lg:p-12 z-10`}
-            >
-              {/* Shape */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <img src={cardsData[2].imageSrc} alt="" />
-              </div>
-              <div className="grid grid-cols-12">
-                <div className="col-span-6">
-                  <h1 className="text-[32px] md:text-5xl font-bold leading-[1.1]">
-                    {cardsData[2].title}
-                  </h1>
-                  <button
-                    className={`px-7 py-3.5 leading-none rounded-lg bg-red-500 text-white font-bold mt-12`}
-                  >
-                    {cardsData[2].buttonLabel}
-                  </button>
-                </div>
-                <div className="col-span-6">
-                  <div className="absolute bottom-0 right-5 -z-10">
-                    <img
-                      src={cardsData[2].childImageSrc}
-                      alt=""
-                      className="max-w-full h-auto"
-                    />
-                  </div>
-                </div>
-              </div>
+        <div className="grid grid-cols-12 gap-6 text-center mt-6 md:mt-12 mx-12">
+          {products.map((product, i) => (
+            <div className="col-span-12 sm:col-span-6 lg:col-span-3" key={i}>
+              <ProductItem product={product} />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
