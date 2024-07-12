@@ -42,7 +42,7 @@ const AllProductPage = () => {
 
       <div className="flex items-center justify-between">
         {/* filter by price range */}
-        <div className="flex items-center justify-between gap-x-2 mt-3 md:mt-8 ml-6 md:ml-12">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-x-2 mt-3 md:mt-8 ml-6 md:ml-12">
           <p className="font-semibold whitespace-nowrap">Filter By</p>
 
           <FilterByPriceProduct onFilterChange={setFilterPrice} />
@@ -68,7 +68,7 @@ const AllProductPage = () => {
         </div>
 
         {/* sort by price */}
-        <div className="flex items-center justify-end gap-x-2 mt-3 md:mt-8 mr-6 md:mr-12">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-y-2 md:gap-y-0 justify-end gap-x-2 mt-3 md:mt-8 mr-6 md:mr-12">
           <p className="font-semibold">Sort By Price</p>
           <SortByPrice setSort={setSort} />
         </div>
