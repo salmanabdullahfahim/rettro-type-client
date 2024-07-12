@@ -3,6 +3,19 @@ import { BsYoutube, BsLinkedin, BsFacebook, BsReddit } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Logo from "../Navbar/Logo";
 
+const offices = [
+  {
+    title: "USA Office",
+    timings: "Mon-Sat 9am to 5pm.",
+    address: "12/2, 43 RD Apartment, Jackson Street, New York, USA",
+  },
+  {
+    title: "Head Office",
+    timings: "Sun-Wed 9am to 5pm.",
+    address: "367 CDA Avenue, East Nasirabad, Chittagong 4100, Bangladesh",
+  },
+];
+
 const Footer = () => {
   return (
     <div className="w-full bg-[#242424] text-slate-100">
@@ -28,60 +41,40 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <p className="text-lg">Latest Products</p>
+          <p className="text-lg font-bold">Office Address</p>
           <ul className="mt-2 flex flex-col gap-y-2 text-sm font-light">
-            <li className="flex flex-col">
-              <span className="text-slate-200 hover:text-blue-400 cursor-pointer">
-                When the new product is launch
-              </span>
-              <span className="text-blue-400">November 12, 2023</span>
-            </li>
-            <li className="flex flex-col">
-              <span className="text-slate-100 hover:text-blue-400 cursor-pointer">
-                When the new product is launch
-              </span>
-              <span className="text-blue-400">November 12, 2023</span>
-            </li>
-            <li className="flex flex-col">
-              <span className="text-slate-100 hover:text-blue-400 cursor-pointer">
-                When the new product is launch
-              </span>
-              <span className="text-blue-400">November 12, 2023</span>
-            </li>
-            <li className="flex flex-col">
-              <span className="text-slate-100 hover:text-blue-400 cursor-pointer">
-                When the new product is launch
-              </span>
-              <span className="text-blue-400">November 12, 2023</span>
-            </li>
+            {offices.map((office, index) => (
+              <li key={index} className="flex flex-col">
+                <span className="text-headerText hover:text-blue-400 cursor-pointer font-semibold">
+                  {office.title}
+                </span>
+                <span className="">{office.timings}</span>
+                <span className="">{office.address}</span>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
-          <p className="text-lg">Links</p>
-          <ul className="flex flex-col mt-2 gap-y-2 text-base font-medium">
+          <p className="text-lg font-bold">Links</p>
+          <ul className="flex flex-col mt-2 gap-y-2 text-sm font-medium">
             <Link to="/">
-              <li className="hover:text-blue-500 cursor-pointer duration-200">
+              <li className="hover:text-headerText cursor-pointer duration-200">
                 Home
               </li>
             </Link>
             <Link to="/cart">
-              <li className="hover:text-blue-500 cursor-pointer duration-200">
+              <li className="hover:text-headerText cursor-pointer duration-200">
                 Cart
               </li>
             </Link>
-            <Link to="/about">
-              <li className="hover:text-blue-500 cursor-pointer duration-200">
+            <Link to="/about-us">
+              <li className="hover:text-headerText cursor-pointer duration-200">
                 About
               </li>
             </Link>
-            <Link to="/contact">
-              <li className="hover:text-blue-500 cursor-pointer duration-200">
+            <Link to="/contact-us">
+              <li className="hover:text-headerText cursor-pointer duration-200">
                 Contact
-              </li>
-            </Link>
-            <Link to="/newsletter">
-              <li className="hover:text-blue-500 cursor-pointer duration-200">
-                Newsletter
               </li>
             </Link>
           </ul>
