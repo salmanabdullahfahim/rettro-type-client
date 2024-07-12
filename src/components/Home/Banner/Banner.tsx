@@ -43,15 +43,19 @@ const Banner = () => {
     <div className="relative">
       <Slider {...settings}>
         <div className="w-ful h-full relative">
-          <img src="/bannerone.jpg" alt="banner 3" />
-          <BannerText title="Outware Picks" />
+          <img src="/bannerthree.png" alt="Keyboard 3" />
+          <BannerText title="Keyware Picks" />
         </div>
         <div className="w-ful h-full relative">
-          <img src="/bannertwo.jpg" alt="banner2" />
+          <img src="/bannerfour.png" alt="banner2" />
           <BannerText title="Seasonal Offer" />
         </div>
+        <div className="w-ful h-full relative">
+          <img src="/bannerfive.png" alt="banner2" />
+          <BannerText title="Limited Edition" />
+        </div>
       </Slider>
-      <div className="absolute w-full h-44 bg-gradient-to-t from-gray-50 to-transparent bottom-0 left-0 z-10" />
+      <div className="absolute w-full h-20 bg-gradient-to-t from-gray-100 to-transparent -bottom-3 left-0 z-10" />
     </div>
   );
 };

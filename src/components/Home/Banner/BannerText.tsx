@@ -1,5 +1,6 @@
 import Container from "@/components/Container/Container";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 interface Props {
   title: string;
@@ -23,8 +24,8 @@ const BannerText = ({ title }: Props) => {
           transition={{ duration: 0.6 }}
           className="text-lg text-slate-100"
         >
-          Stock up on sportsware and limited edition collections on our <br />
-          awesome year ending sale.
+          Stock up on keyware and limited edition collections on our <br />
+          awesome mid year sale.
         </motion.p>
 
         <motion.div
@@ -36,9 +37,11 @@ const BannerText = ({ title }: Props) => {
           <button className="px-6 py-3 bg-slate-100 hover:bg-white text-sm uppercase font-semibold rounded-full duration-200 gap-x-3">
             Find out more
           </button>
-          <button className="px-6 py-3 bg-slate-100 hover:bg-white text-sm uppercase font-semibold rounded-full duration-200">
-            Shop now
-          </button>
+          <Link to="/products">
+            <button className="px-6 py-3 bg-slate-100 hover:bg-white text-sm uppercase font-semibold rounded-full duration-200">
+              Shop now
+            </button>
+          </Link>
         </motion.div>
       </Container>
     </div>
