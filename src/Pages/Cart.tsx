@@ -56,22 +56,22 @@ const Cart = () => {
               <Table className="">
                 <TableHeader>
                   <TableRow className="rounded-lg">
-                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center hidden md:table-cell">
                       Image
                     </TableHead>
-                    <TableHead className="bg-gray-100 text-lg w-3/12  text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12  text-center hidden md:table-cell">
                       Name
                     </TableHead>
-                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center hidden md:table-cell">
                       Quantity
                     </TableHead>
-                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center hidden md:table-cell">
                       Price
                     </TableHead>
-                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center">
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center hidden md:table-cell">
                       Actions
                     </TableHead>
-                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center"></TableHead>
+                    <TableHead className="bg-gray-100 text-lg w-3/12 text-center hidden md:table-cell"></TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

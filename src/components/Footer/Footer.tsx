@@ -82,7 +82,7 @@ const Footer = () => {
         <div>
           <p className="text-md mb-2">Pay us with your trusted partner.</p>
           <img
-            src="/public/payment.png"
+            src="/payment.png"
             alt="payment"
             className="w-full h-10 object-contain"
           />
