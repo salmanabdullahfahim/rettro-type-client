@@ -1,61 +1,77 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import {
-  useGetProductsQuery,
-  useUpdateQuantityMutation,
-} from "@/redux/api/api";
-import { useAppSelector } from "@/redux/hooks";
+import { useAddOrderMutation } from "@/redux/api/api";
+import { resetCart } from "@/redux/features/cartSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const CheckOut = () => {
   const { totalOrderPrice } = useAppSelector((state) => state.cart);
-
   const cartItems = useAppSelector((state) => state.cart.items);
-  const { data: products } = useGetProductsQuery(undefined);
-  const [updateQuantity, { isLoading, isError }] = useUpdateQuantityMutation();
-
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  console.log(isLoading, isError);
+  const [addOrder, { error }] = useAddOrderMutation();
 
-  const handlePlaceOrder = async () => {
+  let errorMessage: string | null = null;
+  if (error?.data?.message) {
+    errorMessage = error.data.message;
+  }
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    products: [],
+    payment: "",
+  });
+
+  // handle form change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // handle place order
+  const handlePlaceOrder = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const products = cartItems.map((item) => ({
+      product: item._id,
+      quantity: item.cartQuantity,
+    }));
+
+    const orderData = {
+      ...formData,
+      products,
+    };
+    console.log({ orderData });
     try {
-      if (isLoading) return;
+      const res = await addOrder(orderData).unwrap();
+      console.log("Order placed successfully", res);
 
-      const updates = cartItems
-        .map((item) => {
-          const product = products?.data.find((p: any) => p._id === item._id);
-
-          if (product) {
-            return {
-              id: product._id,
-              availableQuantity: product.availableQuantity - item.cartQuantity,
-            };
-          }
-          return null;
-        })
-        .filter(Boolean);
-      console.log(updates);
-      await updateQuantity({ updates });
-
-      toast.success("Order placed successfully", {
-        duration: 1500,
-        style: {
-          background: "#736100",
-          color: "#fff",
-        },
-      });
-
+      if (res?.success === true) {
+        toast.success("Order placed successfully", {
+          duration: 1500,
+          style: {
+            background: "#333",
+            color: "#fff",
+          },
+        });
+      }
+      // cart reset
+      dispatch(resetCart());
       navigate("/order-confirmed");
     } catch (error) {
-      console.error("Error placing order:", error);
-
-      toast.error("Error placing order", {
+      toast.error("Failed to place order", {
         duration: 1500,
         style: {
-          background: "#736100",
+          background: "#333",
           color: "#fff",
         },
       });
@@ -63,19 +79,26 @@ const CheckOut = () => {
   };
 
   return (
-    <div className="md:px-12 w-full p-4 mt-12  rounded-md ">
-      <div className="md:flex items-start gap-8  ">
-        <div className="md:w-1/2  w-full rounded-lg   p-4">
-          <div className=" w-full ">
+    <div className="md:px-12 w-full p-4 mt-12 rounded-md">
+      <div className="flex mx-1 justify-center">
+        {errorMessage && (
+          <h2 className="text-center text-xl font-medium text-red-600">
+            Error: {errorMessage}
+          </h2>
+        )}
+      </div>
+      <div className="md:flex items-start gap-8">
+        <div className="md:w-1/2 w-full rounded-lg p-4">
+          <div className="w-full">
             <div className="flex items-center gap-x-6">
               <div>
                 <FaMapMarkerAlt className="text-headerText -mt-4 text-4xl" />
               </div>
               <div>
-                <h2 className="text-3xl mb-1 font-bold  ">
+                <h2 className="text-3xl mb-1 font-bold">
                   Product Delivery Information
                 </h2>
-                <h2 className=" tracking-widest mb-7  ">
+                <h2 className="tracking-widest mb-7">
                   We will deliver your order to this address
                 </h2>
               </div>
@@ -84,9 +107,10 @@ const CheckOut = () => {
               <h2 className="font-semibold">Name*</h2>
               <div className="flex mt-1 justify-center">
                 <input
-                  name="Enter Name"
-                  className="w-full rounded-lg border border-slate-300 mt-2 p-2 "
-                  required={true}
+                  name="name"
+                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                  onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -94,10 +118,11 @@ const CheckOut = () => {
               <h2 className="font-semibold">Email*</h2>
               <div className="flex mt-1 justify-center">
                 <input
-                  name="Enter Email"
+                  name="email"
                   type="email"
-                  className="w-full rounded-lg border border-slate-300 mt-2 p-2 "
-                  required={true}
+                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                  onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -105,9 +130,10 @@ const CheckOut = () => {
               <h2 className="font-semibold">Phone Number*</h2>
               <div className="flex mt-1 justify-center">
                 <input
-                  name="Enter Phone Number"
-                  className="w-full rounded-lg border border-slate-300 mt-2 p-2 "
-                  required={true}
+                  name="phoneNumber"
+                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                  onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -115,8 +141,9 @@ const CheckOut = () => {
               <h2 className="font-semibold">Delivery Address*</h2>
               <div className="flex mt-1 justify-center">
                 <input
-                  name="Enter Delivery Address"
-                  className="w-full rounded-lg border border-slate-300 mt-2 p-2 "
+                  name="address"
+                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -128,34 +155,35 @@ const CheckOut = () => {
                   <input
                     type="radio"
                     name="payment"
-                    required={true}
+                    required
                     value="cashOnDelivery"
+                    onChange={handleChange}
                     className="form-radio text-headerText"
                   />
                   <span className="text-lg">Cash on Delivery</span>
                 </label>
               </div>
-            </div>{" "}
+            </div>
             <button
               onClick={handlePlaceOrder}
-              className="text-white font-medium text-sm mt-8 mx-auto  px-12 py-3 rounded-lg  bg-black/90 hover:bg-black/70 duration-200"
+              className="text-white font-medium text-sm mt-8 mx-auto px-12 py-3 rounded-lg bg-black/90 hover:bg-black/70 duration-200"
             >
-              Place Order{" "}
+              Place Order
             </button>
           </div>
         </div>
-        <div className="md:w-1/2  w-full rounded-lg  p-4">
+        <div className="md:w-1/2 w-full rounded-lg p-4">
           <div className="border md:w-8/12 flex justify-center md:mt-48 items-center border-dashed py-2 mb-4 px-3 mx-auto rounded-md border-headerText">
-            <div className=" ">
+            <div>
               <h2 className="rounded-md font-medium text-lg p-2 mb-2 text-center">
                 Order Total: ${totalOrderPrice.toFixed(2)}
               </h2>
-              <h2 className=" rounded-md  p-2 text-base mb-2 text-center">
+              <h2 className="rounded-md p-2 text-base mb-2 text-center">
                 Free Shipping on 200 and above. Just <br /> for you.{" "}
                 <NavLink
                   to="/products"
                   className={
-                    "text-headerText  font-bold hover:underline duration-200"
+                    "text-headerText font-bold hover:underline duration-200"
                   }
                 >
                   Order More Products

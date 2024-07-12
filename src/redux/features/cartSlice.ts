@@ -113,6 +113,10 @@ export const cartSlice = createSlice({
         }
       }
     },
+    resetCart: (state) => {
+      state.items = [];
+      state.totalOrderPrice = 0;
+    },
   },
 });
 
@@ -121,6 +125,7 @@ export const {
   removeFromCart,
   incrementQuantity,
   decrementQuantity,
+  resetCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
