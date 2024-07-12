@@ -21,7 +21,7 @@ const ContactUs = () => {
 
   return (
     <div>
-      <div className="mx-auto max-w-7xl py-12 md:py-24">
+      <div className="mx-auto max-w-7xl py-12 md:py-18">
         <div className="grid items-center justify-items-center gap-x-4 gap-y-10 lg:grid-cols-2">
           {/* contact from */}
           <div className="flex items-center justify-center">
@@ -116,14 +116,14 @@ const ContactUs = () => {
           </div>
           <img
             alt="Contact us"
-            className="hidden max-h-full w-full rounded-lg object-cover lg:block"
-            src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&h=800&q=80"
+            className="hidden max-h-full w-9/12 rounded-lg object-cover lg:block"
+            src="/contact.svg"
           />
         </div>
 
         <div>
-          <div className="mt-4 md:mt-10">
-            <p className="text-3xl font-bold text-gray-900 text-center">
+          <div className="mt-12 md:mt-20">
+            <p className="text-3xl md:mb-8 font-bold text-gray-900 text-center">
               Made with love, right here in Bangladesh
             </p>
           </div>
@@ -135,7 +135,7 @@ const ContactUs = () => {
             />
           </div>
 
-          <div className="my-8 flex flex-col gap-y-6 md:flex-row lg:justify-around">
+          <div className="my-8 flex flex-col gap-y-6 md:flex-row lg:justify-around mx-6 md:mx-0">
             {locations.map((location) => (
               <div
                 key={location.title}
