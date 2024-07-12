@@ -3,19 +3,19 @@ import { IoLocationOutline } from "react-icons/io5";
 const ContactUs = () => {
   const locations = [
     {
-      title: "Dhaka Office",
+      title: "USA Office",
       timings: "Mon-Sat 9am to 5pm.",
-      address: "10/A, Dilkusha C/A, Motijheel, Dhaka 1000, Bangladesh",
+      address: "12/2, 43 RD Apartment, Jackson Street, New York, USA",
     },
     {
       title: "Head Office",
-      timings: "Mon-Sat 9am to 5pm.",
+      timings: "Sun-Wed 9am to 5pm.",
       address: "367 CDA Avenue, East Nasirabad, Chittagong 4100, Bangladesh",
     },
     {
-      title: "Khulna Office",
+      title: "China Office",
       timings: "Mon-Sat 9am to 5pm.",
-      address: "House No. 12, KDA Avenue, Khulna 9100, Bangladesh",
+      address: "23/2, 123 FSD Avenue, Zuhui Road, Beijing 100084, China",
     },
   ];
 
@@ -27,9 +27,9 @@ const ContactUs = () => {
           <div className="flex items-center justify-center">
             <div className="px-2 md:px-12">
               <p className="text-2xl font-bold text-gray-900 md:text-4xl">
-                Get in touch
+                Get In <span className="text-headerText">Touch</span>
               </p>
-              <p className="mt-4 text-lg text-gray-600">
+              <p className="mt-2 text-lg text-gray-600">
                 Our friendly team would love to hear from you.
               </p>
               <form action="" className="mt-8 space-y-4">
@@ -124,7 +124,8 @@ const ContactUs = () => {
         <div>
           <div className="mt-12 md:mt-20">
             <p className="text-3xl md:mb-8 font-bold text-gray-900 text-center">
-              Made with love, right here in Bangladesh
+              Made with love, right here in{" "}
+              <span className="text-headerText">Bangladesh</span>
             </p>
           </div>
           <div className="w-full px-4 sm:px-6 lg:px-8 my-6">

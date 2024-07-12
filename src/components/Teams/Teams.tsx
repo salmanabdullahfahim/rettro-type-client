@@ -12,25 +12,25 @@ const teamMembers: TeamMember[] = [
     picture: "https://cdn.easyfrontend.com/pictures/team/team_square_1.jpeg",
     fullName: "Salman Abdullah Fahim",
     designation: "Founder / CEO",
-    bio: "Salman is the visionary behind Rettro Type. With a passion for mechanical keyboards and a background in software development, he leads the team with innovation and dedication.",
+    bio: "Fahim is the visionary behind Rettro Type. With a passion for mechanical keyboards and a background in software development, he leads the team with innovation and dedication.",
   },
   {
     picture: "https://cdn.easyfrontend.com/pictures/team/team_square_2.jpeg",
-    fullName: "Raima Ray",
+    fullName: "Raima Renata",
     designation: "Business Head",
     bio: "Raima oversees all business operations at Rettro Type. Her expertise in strategic planning and business development ensures the company's continued growth and success.",
   },
   {
     picture: "https://cdn.easyfrontend.com/pictures/team/team_square_3.jpeg",
-    fullName: "Arjun Kapur",
+    fullName: "Tomas Kruck",
     designation: "UI Design",
-    bio: "Arjun is the creative mind behind our user interfaces. His designs are both aesthetically pleasing and highly functional, enhancing the user experience of our products.",
+    bio: "Tomas is the creative mind behind our user interfaces. His designs are both aesthetically pleasing and highly functional, enhancing the user experience of our products.",
   },
   {
     picture: "https://cdn.easyfrontend.com/pictures/team/team_square_4.jpeg",
-    fullName: "Alia Bhatt",
+    fullName: "Angela Julia",
     designation: "Marketing Head",
-    bio: "Alia drives the marketing strategies at Rettro Type. Her innovative campaigns and deep understanding of market trends help us connect with our audience effectively.",
+    bio: "Julia drives the marketing strategies at Rettro Type. Her innovative campaigns and deep understanding of market trends help us connect with our audience effectively.",
   },
 ];
 
@@ -68,8 +68,8 @@ const Teams: React.FC = () => {
       <div className="container px-4 mx-auto">
         <div className="flex justify-center mb-6 md:mb-12">
           <div className="max-w-lg text-center">
-            <h2 className="text-3xl leading-none font-bold md:text-[45px] mb-4">
-              Our Experts Team
+            <h2 className="text-3xl leading-none font-bold mb-2">
+              OUR EXPERT <span className="text-headerText">TEAM</span>
             </h2>
           </div>
         </div>

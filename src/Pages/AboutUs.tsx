@@ -71,7 +71,7 @@ const ShapeOne = () => (
 
 const ShapeTwo = () => (
   <svg
-    className="absolute top-[75%] right-[0 -z-[1] text-gray-50 dark:text-[#1E2735]"
+    className="absolute top-[75%] right-[0 -z-[1] text-gray-50 "
     width="134"
     height="133"
     viewBox="0 0 134 133"
@@ -105,7 +105,7 @@ const ShapeThree = () => (
 
 const ShapeFour = () => (
   <svg
-    className="absolute bottom-[22%] right-[15%] -z-[1] text-gray-50 dark:text-[#1E2735]"
+    className="absolute bottom-[22%] right-[15%] -z-[1] text-gray-50 "
     width="155"
     height="166"
     viewBox="0 0 155 166"
@@ -136,10 +136,10 @@ const AboutUs: React.FC = () => {
           </div>
           <div className="col-span-12 md:col-span-6 md:mr-4">
             <div>
-              <h2 className="text-2xl leading-tight font-bold md:text-5xl mt-4">
-                Rettro Type's Story
+              <h2 className="text-2xl leading-tight font-bold md:text-3xl mt-4">
+                Rettro <span className="text-headerText">Type's</span> Story
               </h2>
-              <p className="text-base sm:text-lg leading-relaxed opacity-80 my-6 lg:pr-12">
+              <p className="text-base sm:text-lg md:text-[18px] leading-relaxed opacity-80 my-6 mt-4 lg:pr-12">
                 At Rettro Type, we are dedicated to bringing you the best
                 mechanical keyboards that combine durability, style, and
                 exceptional performance. Each keyboard is designed with
@@ -150,7 +150,7 @@ const AboutUs: React.FC = () => {
                 typing experience with Rettro Type.
               </p>
 
-              <div className="grid grid-cols-12 gap-8">
+              <div className="grid grid-cols-12 gap-8 mt-10">
                 {stories.map((item, i) => (
                   <div className="col-span-12 sm:col-span-6" key={i}>
                     <StoryItem item={item} />
