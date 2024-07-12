@@ -47,7 +47,7 @@ const AllProductPage = () => {
 
           <FilterByPriceProduct onFilterChange={setFilterPrice} />
           <button
-            className="border hover:border-black px-4 py-2 mt-3 rounded-lg  text-sm font-medium flex items-center gap-x-2"
+            className="border hover:border-black px-4 py-2 mt-3 rounded-lg  text-sm font-medium flex items-center gap-x-2 whitespace-nowrap"
             onClick={() => {
               setSearchTerm("");
               setFilterPrice("");
@@ -63,7 +63,7 @@ const AllProductPage = () => {
             }}
           >
             <RxCross2 />
-            Filter
+            Reset Filter
           </button>
         </div>
 

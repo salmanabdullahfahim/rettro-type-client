@@ -19,7 +19,7 @@ const FilterByPriceProduct = ({ onFilterChange }: any) => {
 
   return (
     <Select onValueChange={handleFilterChange} value={filterPrice}>
-      <SelectTrigger className="flex gap-1 items-center mt-3 md:mx-3 border-gray-400 border md:px-3 py-2 text-sm rounded-lg">
+      <SelectTrigger className="flex gap-1 items-center mt-3 md:mx-3 border-gray-300 border md:px-3 py-2 text-sm rounded-lg">
         <SelectValue placeholder="Price Range" />
       </SelectTrigger>
       <SelectContent className="w-44">

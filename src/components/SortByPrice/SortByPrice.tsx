@@ -17,7 +17,7 @@ export function SortByPrice({
 }) {
   return (
     <Select onValueChange={setSort}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[180px] border border-gray-300">
         <SelectValue placeholder="Select a Price" />
       </SelectTrigger>
       <SelectContent>

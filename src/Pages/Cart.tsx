@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { useGetProductsQuery } from "@/redux/api/api";
 import SingleCart from "@/components/SingleCart/SingleCart";
-import useUnloadWarning from "@/hooks/useUnloadWarning";
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
@@ -21,13 +20,6 @@ const Cart = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const navigate = useNavigate();
-
-  // Use the hook only if there are items in the cart
-  useUnloadWarning(
-    cartItems.length > 0
-      ? "Are you sure you want to leave? Your cart data will be lost."
-      : null
-  );
 
   useEffect(() => {
     if (isLoading) return;
