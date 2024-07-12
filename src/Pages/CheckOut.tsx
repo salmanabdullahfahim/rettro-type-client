@@ -1,7 +1,6 @@
 import { useAddOrderMutation } from "@/redux/api/api";
 import { resetCart } from "@/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -19,27 +18,14 @@ const CheckOut = () => {
     errorMessage = error.data.message;
   }
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    products: [],
-    payment: "",
-  });
-
   // handle form change
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   // handle place order
   const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
 
     const products = cartItems.map((item) => ({
       product: item._id,
@@ -47,7 +33,11 @@ const CheckOut = () => {
     }));
 
     const orderData = {
-      ...formData,
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phoneNumber: formData.get("phoneNumber"),
+      address: formData.get("address"),
+      payment: formData.get("payment"),
       products,
     };
 
@@ -67,7 +57,7 @@ const CheckOut = () => {
       dispatch(resetCart());
       navigate("/order-confirmed");
     } catch (error) {
-      toast.error("Failed to place order", {
+      toast.error(errorMessage || "Failed to place order", {
         duration: 1500,
         style: {
           background: "#333",
@@ -102,73 +92,70 @@ const CheckOut = () => {
                 </h2>
               </div>
             </div>
-            <div className="mt-6">
-              <h2 className="font-semibold">Name*</h2>
-              <div className="flex mt-1 justify-center">
-                <input
-                  name="name"
-                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <h2 className="font-semibold">Email*</h2>
-              <div className="flex mt-1 justify-center">
-                <input
-                  name="email"
-                  type="email"
-                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <h2 className="font-semibold">Phone Number*</h2>
-              <div className="flex mt-1 justify-center">
-                <input
-                  name="phoneNumber"
-                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <h2 className="font-semibold">Delivery Address*</h2>
-              <div className="flex mt-1 justify-center">
-                <input
-                  name="address"
-                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <h2 className="font-semibold">Payment Method*</h2>
-              <div className="flex flex-col mt-1 space-y-4">
-                <label className="flex items-center space-x-3">
+            <form onSubmit={handlePlaceOrder}>
+              <div className="mt-6">
+                <h2 className="font-semibold">Name*</h2>
+                <div className="flex mt-1 justify-center">
                   <input
-                    type="radio"
-                    name="payment"
+                    name="name"
+                    className="w-full rounded-lg border border-slate-300 mt-2 p-2"
                     required
-                    value="cashOnDelivery"
-                    onChange={handleChange}
-                    className="form-radio text-headerText"
                   />
-                  <span className="text-lg">Cash on Delivery</span>
-                </label>
+                </div>
               </div>
-            </div>
-            <button
-              onClick={handlePlaceOrder}
-              className="text-white font-medium text-sm mt-8 mx-auto px-12 py-3 rounded-lg bg-black/90 hover:bg-black/70 duration-200"
-            >
-              Place Order
-            </button>
+              <div className="mt-4">
+                <h2 className="font-semibold">Email*</h2>
+                <div className="flex mt-1 justify-center">
+                  <input
+                    name="email"
+                    type="email"
+                    className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <h2 className="font-semibold">Phone Number*</h2>
+                <div className="flex mt-1 justify-center">
+                  <input
+                    name="phoneNumber"
+                    className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <h2 className="font-semibold">Delivery Address*</h2>
+                <div className="flex mt-1 justify-center">
+                  <input
+                    name="address"
+                    className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <h2 className="font-semibold">Payment Method*</h2>
+                <div className="flex flex-col mt-1 space-y-4">
+                  <label className="flex items-center space-x-3">
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="cashOnDelivery"
+                      className="form-radio text-headerText"
+                      required
+                    />
+                    <span className="text-lg">Cash on Delivery</span>
+                  </label>
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="text-white font-medium text-sm mt-8 mx-auto px-12 py-3 rounded-lg bg-black/90 hover:bg-black/70 duration-200"
+              >
+                Place Order
+              </button>
+            </form>
           </div>
         </div>
         <div className="md:w-1/2 w-full rounded-lg p-4">
