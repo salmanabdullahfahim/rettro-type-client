@@ -7,6 +7,8 @@ import { BsSearch } from "react-icons/bs";
 import { CardSkeleton } from "@/components/Skeleton/CardSkeleton";
 import useDebounce from "@/hooks/useDebouncer";
 import FilterByPriceProduct from "@/components/FilterByPrice/FilterByPriceProduct";
+import { RxCross2 } from "react-icons/rx";
+import { toast } from "sonner";
 
 const AllProductPage = () => {
   const [filterPrice, setFilterPrice] = useState("");
@@ -44,6 +46,25 @@ const AllProductPage = () => {
           <p className="font-semibold whitespace-nowrap">Filter By</p>
 
           <FilterByPriceProduct onFilterChange={setFilterPrice} />
+          <button
+            className="border hover:border-black px-4 py-2 mt-3 rounded-lg  text-sm font-medium flex items-center gap-x-2"
+            onClick={() => {
+              setSearchTerm("");
+              setFilterPrice("");
+              setSort("");
+
+              toast.success("Filter cleared!", {
+                duration: 1500,
+                style: {
+                  background: "#333",
+                  color: "#fff",
+                },
+              });
+            }}
+          >
+            <RxCross2 />
+            Filter
+          </button>
         </div>
 
         {/* sort by price */}
