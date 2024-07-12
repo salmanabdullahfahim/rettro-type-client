@@ -7,7 +7,7 @@ import {
 import { useAppSelector } from "@/redux/hooks";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { toast } from "sonner";
 
 const CheckOut = () => {
   const { totalOrderPrice } = useAppSelector((state) => state.cart);
@@ -40,19 +40,24 @@ const CheckOut = () => {
       console.log(updates);
       await updateQuantity({ updates });
 
-      Swal.fire({
-        title: "Order Placed",
-        text: "Your order has been placed successfully.",
-        icon: "success",
+      toast.success("Order placed successfully", {
+        duration: 1500,
+        style: {
+          background: "#736100",
+          color: "#fff",
+        },
       });
 
       navigate("/order-confirmed");
     } catch (error) {
       console.error("Error placing order:", error);
-      Swal.fire({
-        title: "Error",
-        text: "There was an error placing your order. Please try again.",
-        icon: "error",
+
+      toast.error("Error placing order", {
+        duration: 1500,
+        style: {
+          background: "#736100",
+          color: "#fff",
+        },
       });
     }
   };
@@ -62,67 +67,70 @@ const CheckOut = () => {
       <div className="md:flex items-start gap-8  ">
         <div className="md:w-1/2  w-full rounded-lg   p-4">
           <div className=" w-full ">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-x-6">
               <div>
-                <FaMapMarkerAlt className="text-[#736100] -mt-4 text-4xl" />
+                <FaMapMarkerAlt className="text-headerText -mt-4 text-4xl" />
               </div>
               <div>
-                <h2 className="text-3xl tracking-widest mb-1 font-bold  ">
-                  Deliver Address
+                <h2 className="text-3xl mb-1 font-bold  ">
+                  Product Delivery Information
                 </h2>
                 <h2 className=" tracking-widest mb-7  ">
                   We will deliver your order to this address
                 </h2>
               </div>
             </div>
-            <div className="mt-8">
-              <h2>Name*</h2>
-              <div className="flex mt-3 justify-center">
+            <div className="mt-6">
+              <h2 className="font-semibold">Name*</h2>
+              <div className="flex mt-1 justify-center">
                 <input
                   name="Enter Name"
                   className="w-full rounded-lg border border-slate-300 mt-2 p-2 "
+                  required={true}
                 />
               </div>
             </div>
-            <div className="mt-5">
-              <h2>Email*</h2>
-              <div className="flex mt-3 justify-center">
+            <div className="mt-4">
+              <h2 className="font-semibold">Email*</h2>
+              <div className="flex mt-1 justify-center">
                 <input
                   name="Enter Email"
                   type="email"
                   className="w-full rounded-lg border border-slate-300 mt-2 p-2 "
+                  required={true}
                 />
               </div>
             </div>
-            <div className="mt-5">
-              <h2>Phone Number*</h2>
-              <div className="flex mt-3 justify-center">
+            <div className="mt-4">
+              <h2 className="font-semibold">Phone Number*</h2>
+              <div className="flex mt-1 justify-center">
                 <input
                   name="Enter Phone Number"
                   className="w-full rounded-lg border border-slate-300 mt-2 p-2 "
+                  required={true}
                 />
               </div>
             </div>
-            <div className="mt-5">
-              <h2>Delivery Address*</h2>
-              <div className="flex mt-3 justify-center">
+            <div className="mt-4">
+              <h2 className="font-semibold">Delivery Address*</h2>
+              <div className="flex mt-1 justify-center">
                 <input
                   name="Enter Delivery Address"
                   className="w-full rounded-lg border border-slate-300 mt-2 p-2 "
+                  required
                 />
               </div>
             </div>
-            <div className="mt-5">
-              <h2>Payment Method*</h2>
-              <div className="flex flex-col mt-2 space-y-4">
+            <div className="mt-4">
+              <h2 className="font-semibold">Payment Method*</h2>
+              <div className="flex flex-col mt-1 space-y-4">
                 <label className="flex items-center space-x-3">
                   <input
                     type="radio"
                     name="payment"
-                    required
+                    required={true}
                     value="cashOnDelivery"
-                    // checked={true}
-                    className="form-radio text-indigo-600"
+                    className="form-radio text-headerText"
                   />
                   <span className="text-lg">Cash on Delivery</span>
                 </label>
@@ -130,22 +138,27 @@ const CheckOut = () => {
             </div>{" "}
             <button
               onClick={handlePlaceOrder}
-              className="text-white font-medium text-lg mt-6 mx-auto  px-5 py-2 rounded-lg  bg-[#736100]"
+              className="text-white font-medium text-sm mt-8 mx-auto  px-12 py-3 rounded-lg  bg-black/90 hover:bg-black/70 duration-200"
             >
               Place Order{" "}
             </button>
           </div>
         </div>
         <div className="md:w-1/2  w-full rounded-lg  p-4">
-          <div className="border md:w-8/12 flex justify-center md:mt-48 items-center border-dashed py-2 mb-4 px-3 mx-auto rounded-md border-[#957c00]">
+          <div className="border md:w-8/12 flex justify-center md:mt-48 items-center border-dashed py-2 mb-4 px-3 mx-auto rounded-md border-headerText">
             <div className=" ">
               <h2 className="rounded-md font-medium text-lg p-2 mb-2 text-center">
                 Order Total: ${totalOrderPrice.toFixed(2)}
               </h2>
               <h2 className=" rounded-md  p-2 text-base mb-2 text-center">
                 Free Shipping on 200 and above. Just <br /> for you.{" "}
-                <NavLink to="/products" className={"text-[#957c00]  font-bold"}>
-                  View All Products
+                <NavLink
+                  to="/products"
+                  className={
+                    "text-headerText  font-bold hover:underline duration-200"
+                  }
+                >
+                  Order More Products
                 </NavLink>
               </h2>
             </div>
