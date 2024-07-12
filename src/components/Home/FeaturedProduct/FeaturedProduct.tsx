@@ -8,7 +8,7 @@ const FeaturedProduct = () => {
   const { data, isLoading } = useGetProductsQuery(undefined);
   return (
     <div className="w-full">
-      <h2 className="text-3xl mb-2 font-bold text-center">
+      <h2 className="text-3xl  md:mt-12 mb-2 font-bold text-center">
         {" "}
         FEATURED <span className="text-headerText"> PRODUCTS</span>
       </h2>

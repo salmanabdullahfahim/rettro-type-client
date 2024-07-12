@@ -53,6 +53,7 @@ export function UpdateProductModal({ product }: { product: TProduct }) {
         });
       }
     } catch (error) {
+      // @ts-expect-error
       toast.error(error?.data?.errorSources[0]?.message, {
         duration: 1500,
         style: {

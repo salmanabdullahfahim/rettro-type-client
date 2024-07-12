@@ -30,7 +30,7 @@ const cardsData = [
 
 export const ProductCategory = () => {
   return (
-    <section className="ezy__epcategory11 light py-14 md:py-28 bg-white  text-zinc-900 relative overflow-hidden z-10">
+    <section className="ezy__epcategory11 light py-14 md:py-6 bg-white  text-zinc-900 relative overflow-hidden z-10 md:mt-12">
       <div className="container px-12 mx-auto">
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="w-full lg:w-1/2">

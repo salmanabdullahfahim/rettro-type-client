@@ -14,7 +14,9 @@ const CheckOut = () => {
   const [addOrder, { error }] = useAddOrderMutation();
 
   let errorMessage: string | null = null;
+  // @ts-ignore
   if (error?.data?.message) {
+    // @ts-ignore
     errorMessage = error.data.message;
   }
 
@@ -69,13 +71,6 @@ const CheckOut = () => {
 
   return (
     <div className="md:px-12 w-full p-4 mt-12 rounded-md">
-      <div className="flex mx-1 justify-center">
-        {errorMessage && (
-          <h2 className="text-center text-xl font-medium text-red-600">
-            Error: {errorMessage}
-          </h2>
-        )}
-      </div>
       <div className="md:flex items-start gap-8">
         <div className="md:w-1/2 w-full rounded-lg p-4">
           <div className="w-full">

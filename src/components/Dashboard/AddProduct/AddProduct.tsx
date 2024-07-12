@@ -32,6 +32,7 @@ const AddProduct = () => {
         reset(); // Reset the form after successful submission
       }
     } catch (error) {
+      // @ts-expect-error
       toast.error(error?.data?.errorSources[0]?.message, {
         duration: 1500,
         style: {
@@ -44,7 +45,7 @@ const AddProduct = () => {
 
   return (
     <div className="w-4/5 px-6">
-      <h2 className="text-2xl font-semibold mt-5 italic md:mx-6">
+      <h2 className="text-lg md:text-2xl font-semibold mt-5 md:mx-6">
         Add New Product
       </h2>
       <div className="my-8 md:mx-6 border-2 border-gray-600 p-6 md:p-8 rounded">

@@ -8,7 +8,9 @@ An e-commerce website exclusively for mechanical keyboards, providing a modern a
 
 This project is an e-commerce website designed for mechanical keyboard enthusiasts. It offers easy product browsing, detailed product pages, a smooth cart system, and efficient product management tools for administrators. Users can enjoy features like fast search, page refresh warnings, and filtering.
 
-## Live Url
+## Live Deployment URL
+
+- [https://rettro-type.vercel.app/]
 
 ## Features
 
