@@ -6,9 +6,10 @@ import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { CardSkeleton } from "@/components/Skeleton/CardSkeleton";
 import useDebounce from "@/hooks/useDebouncer";
+import FilterByPriceProduct from "@/components/FilterByPrice/FilterByPriceProduct";
 
 const AllProductPage = () => {
-  const [filter, setFilter] = useState("");
+  const [filterPrice, setFilterPrice] = useState("");
   const [sort, setSort] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -18,6 +19,7 @@ const AllProductPage = () => {
   const queries = {
     searchTerm: debouncedSearchTerm,
     sort,
+    priceRange: filterPrice,
   };
 
   const { data, isLoading } = useGetProductsQuery(queries);
@@ -38,8 +40,10 @@ const AllProductPage = () => {
 
       <div className="flex items-center justify-between">
         {/* filter by price range */}
-        <div className="flex items-center justify-start gap-x-2 mt-3 md:mt-8 ml-6 md:ml-12">
-          <p className="font-semibold">Filter By Price Range</p>
+        <div className="flex items-center justify-between gap-x-2 mt-3 md:mt-8 ml-6 md:ml-12">
+          <p className="font-semibold whitespace-nowrap">Filter By</p>
+
+          <FilterByPriceProduct onFilterChange={setFilterPrice} />
         </div>
 
         {/* sort by price */}
