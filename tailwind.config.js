@@ -21,6 +21,8 @@ module.exports = {
         border: "hsl(var(--border))",
         darkText: "#242424",
         headerText: "rgb(2 132 199)",
+        "custom-gray": "#f1f4f9",
+
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",

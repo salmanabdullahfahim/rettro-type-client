@@ -21,16 +21,8 @@ const products = [
 
 // @ts-expect-error
 const ProductItem = ({ product }) => {
-  const containerStyle = {
-    backgroundImage:
-      "linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.4))",
-  };
   return (
-    <div className="bg-white flex flex-col h-full relative z-20 rounded-md">
-      <div
-        className="absolute top-0 left-0 w-full h-full -z-10"
-        style={containerStyle}
-      ></div>
+    <div className="flex flex-col h-full bg-gradient-to-r from-custom-gray to-custom-gray rounded-lg">
       <div className="flex justify-center items-center p-6 h-full">
         <img
           src={product.img}
@@ -39,7 +31,9 @@ const ProductItem = ({ product }) => {
         />
       </div>
       <div className="text-center px-4 py-6">
-        <h2 className="text-lg font-bold leading-none mb-2">{product.title}</h2>
+        <h2 className="text-lg font-semibold leading-none mb-2">
+          {product.title}
+        </h2>
       </div>
     </div>
   );
