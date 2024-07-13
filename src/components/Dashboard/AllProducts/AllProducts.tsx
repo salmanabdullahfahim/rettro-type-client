@@ -1,6 +1,7 @@
 import { useGetProductsQuery } from "@/redux/api/api";
 import { DeleteProductModal } from "../DeleteProductModal/DeleteProductModal";
 import { UpdateProductModal } from "../UpdateProductModal/UpdateProductModal";
+import SkeletonTable from "@/components/Skeleton/SkeletonTable";
 
 export type TProduct = {
   _id: string;
@@ -16,7 +17,7 @@ export type TProduct = {
 export function AllProducts() {
   const { data, isLoading } = useGetProductsQuery(undefined);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <SkeletonTable />;
 
   return (
     <>
