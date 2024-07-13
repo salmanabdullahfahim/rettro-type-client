@@ -61,7 +61,13 @@ const ShapeOne = () => (
         fillOpacity="1"
       />
     </svg>
-    <img src="/logo.png" alt="" className="max-w-full h-auto" />
+    <img
+      src="/logo.png"
+      alt=""
+      className="max-w-full h-auto"
+      data-aos="fade-right"
+      data-aos-duration="1500"
+    />
   </>
 );
 
@@ -131,7 +137,7 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
           <div className="col-span-12 md:col-span-6 md:mr-4">
-            <div>
+            <div data-aos="fade-left" data-aos-duration="1700">
               <h2 className="text-2xl leading-tight font-bold md:text-3xl mt-4">
                 Rettro <span className="text-headerText">Type's</span> Story
               </h2>

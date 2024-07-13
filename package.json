@@ -20,6 +20,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "@types/react-slick": "^0.23.13",
     "@types/slick-carousel": "^1.6.40",
+    "aos": "^2.3.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.13",

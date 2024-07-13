@@ -39,7 +39,11 @@ interface TeamMemberItemProps {
 }
 
 const TeamMemberItem: React.FC<TeamMemberItemProps> = ({ member }) => (
-  <div className="bg-white shadow-xl rounded-2xl h-full">
+  <div
+    className="bg-white shadow-xl rounded-2xl h-full"
+    data-aos="fade-up"
+    data-aos-duration="1500"
+  >
     <img
       src={member.picture}
       alt={member.fullName}

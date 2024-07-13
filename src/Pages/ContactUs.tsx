@@ -26,12 +26,14 @@ const ContactUs = () => {
           {/* contact from */}
           <div className="flex items-center justify-center">
             <div className="px-2 md:px-12">
-              <p className="text-2xl font-bold text-gray-900 md:text-4xl">
-                Get In <span className="text-headerText">Touch</span>
-              </p>
-              <p className="mt-2 text-lg text-gray-600">
-                Our friendly team would love to hear from you.
-              </p>
+              <div data-aos="fade-right" data-aos-duration="1500">
+                <p className="text-2xl font-bold text-gray-900 md:text-4xl">
+                  Get In <span className="text-headerText">Touch</span>
+                </p>
+                <p className="mt-2 text-lg text-gray-600">
+                  Our friendly team would love to hear from you.
+                </p>
+              </div>
               <form action="" className="mt-8 space-y-4">
                 <div className="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
                   <div className="grid w-full  items-center gap-1.5">
@@ -118,10 +120,12 @@ const ContactUs = () => {
             alt="Contact us"
             className="hidden max-h-full w-9/12 rounded-lg object-cover lg:block"
             src="/contact.svg"
+            data-aos="zoom-in"
+            data-aos-duration="1700"
           />
         </div>
 
-        <div>
+        <div data-aos="fade-up" data-aos-duration="1200">
           <div className="mt-12 md:mt-20">
             <p className="text-3xl md:mb-8 font-bold text-gray-900 text-center">
               Made with love, right here in{" "}
